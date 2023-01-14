@@ -12,7 +12,6 @@
 - Effector state manager
 - Chakra UI
 - Feature sliced design methodology  
-- Font Loader
 - ESLint
 
 <br />
