@@ -1,0 +1,6 @@
+export const ELEMENT_TYPES = {
+  : "FOOTBALL",
+  BASKETBALL: "BASKETBALL",
+  TENNIS: "TENNIS",
+  VOLLEYBALL: "VOLLEYBALL",
+} as const;
