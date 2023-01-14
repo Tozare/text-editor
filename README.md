@@ -1,5 +1,10 @@
 # Simple Text editor
 
+## App link: https://63c2cf760b34131a9bf292e9--tubular-brigadeiros-f183d0.netlify.app/
+
+## Result: 
+<img width="1440" alt="Снимок экрана 2023-01-14 в 9 08 13 PM" src="https://user-images.githubusercontent.com/51313869/212478758-53fdde2b-173b-47f8-b17e-f6904aa0e759.png">
+
 ## Used technologies
 
 - React
