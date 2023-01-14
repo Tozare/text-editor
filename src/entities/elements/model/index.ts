@@ -1,19 +1,38 @@
 import { createEffect, createEvent, createStore, sample } from 'effector';
-import { fieldsApi } from "@src/shared/api";
-import type { Field } from "../typings";
+import type { Element } from "../typings";
+import { DEFAULT_TEXT_ELEMENT } from "../config";
 
-export const $fieldsList = createStore<Field[]>([]);
-export const fieldsListChanged = createEvent<Field[]>();
+export const $element = createStore<Element>(DEFAULT_TEXT_ELEMENT);
+export const elementChanged = createEvent<Element>();
+export const elementInitialized = createEvent<Element>();
 
-$fieldsList.on(fieldsListChanged, (_, fields) => fields);
+$element
+  .on(elementChanged, (_, element) => element)
+  .on(elementInitialized, (_, element) => element)
 
-export const getFieldsListFx = createEffect(async () => {
-  const fieldsRes = await fieldsApi.getFieldsList({});
-  return fieldsRes.data as Field[];
+export const getElementFx = createEffect(async () => {
+  // const fieldsRes = await fieldsApi.getFieldsList({});
+  // return fieldsRes.data as Field[];
+  const elementAsString = localStorage.getItem("text-element");
+  const element = JSON.parse(elementAsString);
+  console.log("storage", element);
+  return DEFAULT_TEXT_ELEMENT;
+});
+
+export const saveElementFx = createEffect(async (element: Element) => {
+  localStorage.setItem("text-element", JSON.stringify(element));
 });
 
 sample({
-  clock: getFieldsListFx.doneData,
-  target: fieldsListChanged,
-})
+  clock: getElementFx.doneData,
+  target: elementInitialized,
+});
+
+sample({
+  clock: elementChanged,
+  target: saveElementFx,
+});
+
+
+
 

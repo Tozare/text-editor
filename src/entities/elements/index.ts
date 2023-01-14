@@ -1,3 +1,4 @@
-export { HorizontalFieldCard, VerticalFieldCard } from "./ui";
-export * as fieldsModel from "./model";
-export type { Field } from "./typings";
+export { Text } from "./ui";
+export * as elementsModel from "./model";
+export * as elementsConfig from "./config";
+export type { Element } from "./typings";

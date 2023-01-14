@@ -1,58 +1,27 @@
 import {
-  FIELD_TYPES,
-  FACILITY_TYPES,
-  FIELD_ROOM_TYPES,
-  COVERING_TYPES,
+  ELEMENT_TYPES,
+  TEXT_ALIGN_TYPES
 } from "../config";
 import { Values } from '@src/shared/typings/object-values';
 
-interface Address {
-  country: string,
-  region: string,
-  city: string,
-  street: string,
-  building: string,
+interface ElementInit {
+  type: Values<typeof ELEMENT_TYPES>,
+  width: number,
+  height: number,
+  x: number,
+  y: number,
 }
 
-interface Price {
-  value: number,
-  currency: string,
+export interface TextElement extends ElementInit {
+  type: typeof ELEMENT_TYPES.TEXT,
+  fontFamily: string,
+  fontWeight: number,
+  fontSize: number,
+  color: string,
+  letterSpacing: number,
+  lineHeight: number,
+  textAlign: Values<typeof TEXT_ALIGN_TYPES>,
+  text: string,
 }
 
-interface Facility {
-  type: Values<typeof FACILITY_TYPES>,
-  value: string,
-}
-
-
-interface FieldInit {
-  type: Values<typeof FIELD_TYPES>,
-  name: string,
-  address: Address,
-  rating: number,
-  price: Price,
-  facilities: Facility[],
-  size: string,
-  roomType: Values<typeof FIELD_ROOM_TYPES>,
-  coveringType: Values<typeof COVERING_TYPES>,
-  media: string[],
-}
-
-export interface FootballField extends FieldInit {
-  type: typeof FIELD_TYPES.FOOTBALL,
-}
-
-export interface BasketballField extends FieldInit {
-  type: typeof FIELD_TYPES.BASKETBALL,
-}
-
-export interface TennisField extends FieldInit {
-  type: typeof FIELD_TYPES.TENNIS,
-}
-
-export interface VolleyballField extends FieldInit {
-  type: typeof FIELD_TYPES.VOLLEYBALL,
-}
-
-export type Field = FootballField;
-// export type Fields = Array<FootballField | BasketballField | TennisField | VolleyballField>
+export type Element = TextElement;
