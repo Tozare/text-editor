@@ -14,7 +14,7 @@ export const getElementFx = createEffect(async () => {
   // const fieldsRes = await fieldsApi.getFieldsList({});
   // return fieldsRes.data as Field[];
   const elementAsString = localStorage.getItem("text-element");
-  const element = JSON.parse(elementAsString);
+  const element = elementAsString ? JSON.parse(elementAsString) : DEFAULT_TEXT_ELEMENT;
   return element;
 });
 
