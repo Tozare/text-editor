@@ -15,8 +15,7 @@ export const getElementFx = createEffect(async () => {
   // return fieldsRes.data as Field[];
   const elementAsString = localStorage.getItem("text-element");
   const element = JSON.parse(elementAsString);
-  console.log("storage", element);
-  return DEFAULT_TEXT_ELEMENT;
+  return element;
 });
 
 export const saveElementFx = createEffect(async (element: Element) => {
